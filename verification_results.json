@@ -1,0 +1,83 @@
+[
+  {
+    "url": "file:///C:/Users/DELL/Desktop/AI-AUDITOR/backend/sample_accessibility_page.html",
+    "status": "PASS",
+    "total_violations": 5,
+    "severity_breakdown": "Critical: 2, Serious: 3, Moderate: 0, Minor: 0",
+    "score": 46,
+    "grade": "F",
+    "grade_label": "Non-Compliant (Requires Remediation)",
+    "valid_bounding_boxes": "4/5",
+    "screenshot_size_kb": 12.3,
+    "sample_fixes": [
+      {
+        "rule_id": "button-name",
+        "selector": "#submit-btn-empty",
+        "explanation": "Buttons without discernible text or ARIA labels cannot be announced by screen readers, leaving visually impaired users u...",
+        "corrected_code": "<button type=\"submit\" id=\"submit-btn-empty\" style=\"width: 40px; height: 40px; background: blue; border: none;\"></button>"
+      },
+      {
+        "rule_id": "color-contrast",
+        "selector": "h1",
+        "explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users wi...",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><h1>Sample E-Commerce Store</h1></span>"
+      },
+      {
+        "rule_id": "color-contrast",
+        "selector": "#low-contrast-para",
+        "explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users wi...",
+        "corrected_code": "<p id=\"low-contrast-para\" style=\"color: #111827; background-color: #FFFFFF; color: #e2e8f0; background-color: #ffffff; font-size: 14px;\">\n        Spec"
+      }
+    ]
+  },
+  {
+    "url": "https://news.ycombinator.com/",
+    "status": "PASS",
+    "total_violations": 249,
+    "severity_breakdown": "Critical: 3, Serious: 243, Moderate: 3, Minor: 0",
+    "score": 0,
+    "grade": "F",
+    "grade_label": "Non-Compliant (Requires Remediation)",
+    "valid_bounding_boxes": "248/249",
+    "screenshot_size_kb": 51.6,
+    "sample_fixes": [
+      {
+        "rule_id": "color-contrast",
+        "selector": "#\\34 9257377 > .title[align=\"right\"][valign=\"top\"] > .rank",
+        "explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users wi...",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><span class=\"rank\">1.</span></span>"
+      },
+      {
+        "rule_id": "color-contrast",
+        "selector": "a[href=\"from?site=bbc.com\"] > .sitestr",
+        "explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users wi...",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><span class=\"sitestr\">bbc.com</span></span>"
+      },
+      {
+        "rule_id": "color-contrast",
+        "selector": "tr:nth-child(2) > .subtext > .subline",
+        "explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users wi...",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><span class=\"subline\"></span>"
+      }
+    ]
+  },
+  {
+    "url": "https://www.w3.org/WAI/demos/bad/2011/home/",
+    "status": "PASS",
+    "total_violations": 1,
+    "severity_breakdown": "Critical: 1, Serious: 0, Moderate: 0, Minor: 0",
+    "score": 85,
+    "grade": "A",
+    "grade_label": "WCAG 2.1 A (Basic Compliance)",
+    "valid_bounding_boxes": "0/1",
+    "screenshot_size_kb": 11.5,
+    "sample_fixes": [
+      {
+        "rule_id": "meta-refresh",
+        "selector": "meta[http-equiv=\"refresh\"]",
+        "explanation": "The element flagged for rule 'meta-refresh' violates WCAG guidelines (Delayed refresh under 20 hours must not be used). ...",
+        "corrected_code": "<!-- Remediation for meta-refresh -->\n<meta http-equiv=\"refresh\" content=\"360\">"
+      }
+    ]
+  }
+]

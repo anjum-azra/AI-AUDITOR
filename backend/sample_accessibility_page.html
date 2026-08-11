@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accessibility Verification Test Page</title>
+</head>
+<body style="background-color: #ffffff; color: #e5e7eb; font-family: sans-serif; padding: 40px;">
+  
+  <header>
+    <h1>Sample E-Commerce Store</h1>
+    <!-- Violation 1: Image missing alt text -->
+    <img src="https://via.placeholder.com/150" id="hero-banner-img" />
+  </header>
+
+  <main>
+    <section>
+      <!-- Violation 2: Low contrast text (light gray text on white background) -->
+      <p id="low-contrast-para" style="color: #e2e8f0; background-color: #ffffff; font-size: 14px;">
+        Special promotional discount available for new customers today!
+      </p>
+
+      <!-- Violation 3: Form input without accessible label -->
+      <form style="margin-top: 20px;">
+        <input type="text" placeholder="Enter coupon code" id="coupon-input" />
+        
+        <!-- Violation 4: Button missing discernible text name -->
+        <button type="submit" id="submit-btn-empty" style="width: 40px; height: 40px; background: blue; border: none;"></button>
+      </form>
+    </section>
+
+    <footer style="margin-top: 40px;">
+      <!-- Violation 5: Link missing discernible text name -->
+      <a href="/terms" id="empty-terms-link" style="color: #cbd5e1;"></a>
+    </footer>
+  </body>
+</html>
