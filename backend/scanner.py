@@ -54,7 +54,9 @@ async def scan_url_with_playwright(url: str, viewport_width: int = 1280, viewpor
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
                 "--disable-dev-shm-usage",
-                "--disable-gpu"
+                "--disable-gpu",
+                "--disable-web-security",
+                "--allow-running-insecure-content"
             ]
         )
         
@@ -62,25 +64,50 @@ async def scan_url_with_playwright(url: str, viewport_width: int = 1280, viewpor
             viewport={"width": viewport_width, "height": viewport_height},
             device_scale_factor=1,
             ignore_https_errors=True,
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 AI-Accessibility-Auditor/1.0"
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
         
         page = await context.new_page()
         
         logger.info(f"Navigating to {url}...")
+        loaded_ok = False
+        
+        # Strategy 1: domcontentloaded (fast, works for most pages)
         try:
-            await page.goto(url, wait_until="domcontentloaded", timeout=20000)
+            await page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            loaded_ok = True
+            logger.info(f"Page loaded via domcontentloaded: {url}")
         except Exception as e:
-            logger.warning(f"Domcontentloaded timeout for {url}: {e}")
+            logger.warning(f"domcontentloaded strategy failed for {url}: {e}")
+        
+        # Strategy 2: load event fallback
+        if not loaded_ok:
             try:
-                await page.goto(url, timeout=15000)
-            except Exception as e2:
-                logger.error(f"Failed to navigate to {url}: {e2}")
-                await browser.close()
-                raise ValueError(f"Could not load website: {str(e2)}")
+                await page.goto(url, wait_until="load", timeout=45000)
+                loaded_ok = True
+                logger.info(f"Page loaded via load event: {url}")
+            except Exception as e:
+                logger.warning(f"load event strategy failed for {url}: {e}")
 
-        # Wait extra time for JS rendering / hydration
-        await page.wait_for_timeout(2000)
+        # Strategy 3: bare navigation - get whatever we can
+        if not loaded_ok:
+            try:
+                await page.goto(url, timeout=30000)
+                loaded_ok = True
+                logger.info(f"Page loaded via bare navigation: {url}")
+            except Exception as e2:
+                logger.error(f"All navigation strategies failed for {url}: {e2}")
+                await browser.close()
+                err_msg = str(e2)
+                if "ERR_NAME_NOT_RESOLVED" in err_msg or "net::ERR" in err_msg:
+                    raise ValueError(f"Cannot reach '{url}'. Check the URL is correct and the site is online.")
+                elif "Timeout" in err_msg or "timeout" in err_msg:
+                    raise ValueError(f"Website '{url}' took too long to respond (>30s). Try a simpler or faster-loading page.")
+                else:
+                    raise ValueError(f"Could not load website '{url}': {err_msg[:200]}")
+
+        # Wait for JS rendering / hydration (longer for SPAs)
+        await page.wait_for_timeout(3000)
         
         # Get page dimensions
         page_dimensions = await page.evaluate("""() => {
@@ -102,13 +129,18 @@ async def scan_url_with_playwright(url: str, viewport_width: int = 1280, viewpor
             if (typeof axe === 'undefined') {
                 return { error: 'axe-core not defined' };
             }
-            return await axe.run(document, {
-                runOnly: {
-                    type: 'tag',
-                    values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice']
-                },
-                resultTypes: ['violations', 'passes', 'incomplete']
-            });
+            try {
+                return await axe.run(document, {
+                    runOnly: {
+                        type: 'tag',
+                        values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice']
+                    },
+                    resultTypes: ['violations', 'passes', 'incomplete'],
+                    timeout: 30000
+                });
+            } catch(err) {
+                return { error: 'axe.run() threw: ' + err.message };
+            }
         }""")
         
         if "error" in axe_results:

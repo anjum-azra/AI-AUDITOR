@@ -1,85 +1,133 @@
 import React, { useState } from 'react';
-import { Search, Globe, Play, Sparkles, AlertCircle } from 'lucide-react';
+import { Globe, Sparkles, ArrowRight, Zap, Shield, Eye } from 'lucide-react';
 
 const PRESET_SITES = [
-  { name: 'W3C Accessibility Demo (Bad)', url: 'https://www.w3.org/WAI/demos/bad/' },
-  { name: 'Hacker News', url: 'https://news.ycombinator.com/' },
-  { name: 'Testfire Online', url: 'https://demo.testfire.net/' }
+  { name: '🎯 W3C Bad Demo', url: 'https://www.w3.org/WAI/demos/bad/' },
+  { name: '📰 Hacker News', url: 'https://news.ycombinator.com/' },
+  { name: '🏦 Testfire Bank', url: 'https://demo.testfire.net/' },
+];
+
+const FEATURES = [
+  { icon: Shield, label: 'WCAG 2.1 AA/AAA', color: '#818cf8' },
+  { icon: Eye,    label: 'Visual Bounding Boxes', color: '#a78bfa' },
+  { icon: Zap,    label: 'AI Code Fixes', color: '#f472b6' },
 ];
 
 export default function UrlForm({ onStartScan, isScanning }) {
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
+  const [focused, setFocused] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!url.trim()) {
-      setError('Please enter a website URL');
-      return;
-    }
+    if (!url.trim()) { setError('Enter a URL to audit'); return; }
     setError('');
     onStartScan(url.trim());
   };
 
-  const handlePresetSelect = (presetUrl) => {
+  const handlePreset = (presetUrl) => {
     setUrl(presetUrl);
     setError('');
     onStartScan(presetUrl);
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-6 px-4">
-      <form onSubmit={handleSubmit} className="relative">
-        <div className="glass-panel p-2 rounded-2xl border border-slate-700/60 shadow-2xl shadow-brand-500/5 focus-within:border-brand-500/80 transition-all">
-          <div className="flex items-center gap-3 px-3 py-1">
-            <Globe className="h-5 w-5 text-brand-400 shrink-0" />
+    <div className="w-full max-w-3xl mx-auto px-4 animate-fade-up">
+
+      {/* Feature pills */}
+      <div className="flex justify-center flex-wrap gap-2 mb-6">
+        {FEATURES.map(({ icon: Icon, label, color }) => (
+          <span key={label} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold"
+            style={{ background: `${color}18`, border: `1px solid ${color}30`, color }}>
+            <Icon className="h-3 w-3" />
+            {label}
+          </span>
+        ))}
+      </div>
+
+      {/* URL Input */}
+      <form onSubmit={handleSubmit}>
+        <div className="relative rounded-2xl transition-all duration-300"
+          style={{
+            background: focused ? 'rgba(99,102,241,0.06)' : 'rgba(15,22,40,0.7)',
+            border: focused ? '1px solid rgba(99,102,241,0.45)' : '1px solid rgba(255,255,255,0.08)',
+            boxShadow: focused ? '0 0 0 3px rgba(99,102,241,0.12), 0 20px 40px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.25)',
+            backdropFilter: 'blur(20px)',
+          }}>
+          <div className="flex items-center gap-3 p-2 pl-4">
+            <Globe className="h-5 w-5 shrink-0 transition-colors duration-200"
+              style={{ color: focused ? '#818cf8' : '#475569' }} />
             <input
+              id="url-input"
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="Enter website URL to audit (e.g., https://example.com)"
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              placeholder="https://example.com — enter any website URL"
               disabled={isScanning}
-              className="w-full bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none font-mono py-2"
+              className="input-field flex-1 py-3 text-[15px] disabled:opacity-50"
+              autoComplete="url"
             />
             <button
+              id="audit-btn"
               type="submit"
               disabled={isScanning}
-              className="shrink-0 flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 via-indigo-600 to-pink-600 hover:from-brand-500 hover:to-pink-500 text-white font-semibold text-xs shadow-lg shadow-brand-600/30 hover:shadow-brand-500/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95"
+              className="btn-primary shrink-0"
             >
               {isScanning ? (
                 <>
-                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                  <span>Scanning...</span>
+                  <span className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                  Scanning…
                 </>
               ) : (
                 <>
                   <Sparkles className="h-4 w-4" />
-                  <span>Audit Website</span>
+                  Audit Site
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </>
               )}
             </button>
           </div>
         </div>
+
+        {error && (
+          <p className="mt-2 text-xs text-rose-400 flex items-center gap-1.5 px-2">
+            <span className="h-1 w-1 rounded-full bg-rose-400" />
+            {error}
+          </p>
+        )}
       </form>
 
-      {error && (
-        <div className="mt-2 flex items-center gap-2 text-xs text-rose-400 px-3">
-          <AlertCircle className="h-3.5 w-3.5" />
-          <span>{error}</span>
-        </div>
-      )}
-
-      {/* Preset Target Buttons */}
-      <div className="mt-4 flex flex-wrap items-center gap-2 px-1">
-        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider text-[10px]">Sample Verification Targets:</span>
-        {PRESET_SITES.map((preset, idx) => (
+      {/* Preset quick-launch chips */}
+      <div className="mt-5 flex flex-wrap items-center gap-2">
+        <span className="text-[11px] text-slate-500 font-semibold uppercase tracking-widest shrink-0">
+          Quick test:
+        </span>
+        {PRESET_SITES.map((p, i) => (
           <button
-            key={idx}
-            onClick={() => handlePresetSelect(preset.url)}
+            key={i}
+            id={`preset-btn-${i}`}
+            onClick={() => handlePreset(p.url)}
             disabled={isScanning}
-            className="text-xs px-3 py-1 rounded-lg bg-slate-800/60 hover:bg-brand-600/20 text-slate-300 hover:text-brand-300 border border-slate-700/50 hover:border-brand-500/40 transition-all font-mono"
+            className="text-[12px] px-3 py-1.5 rounded-lg font-medium transition-all duration-200 disabled:opacity-40"
+            style={{
+              background: 'rgba(30,41,59,0.6)',
+              border: '1px solid rgba(255,255,255,0.07)',
+              color: '#94a3b8',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
+              e.currentTarget.style.borderColor = 'rgba(99,102,241,0.3)';
+              e.currentTarget.style.color = '#a5b4fc';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = 'rgba(30,41,59,0.6)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
+              e.currentTarget.style.color = '#94a3b8';
+            }}
           >
-            {preset.name}
+            {p.name}
           </button>
         ))}
       </div>

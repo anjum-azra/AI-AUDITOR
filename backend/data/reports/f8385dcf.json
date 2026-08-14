@@ -1,0 +1,57 @@
+{
+  "id": "f8385dcf",
+  "url": "https://www.w3.org/WAI/demos/bad/",
+  "score": 85,
+  "grade": "A",
+  "grade_label": "WCAG 2.1 A (Basic Compliance)",
+  "severity_counts": {
+    "critical": 1,
+    "serious": 0,
+    "moderate": 0,
+    "minor": 0
+  },
+  "total_violations": 1,
+  "passes_count": 29,
+  "incomplete_count": 0,
+  "page_dimensions": {
+    "scrollWidth": 1280,
+    "scrollHeight": 800,
+    "viewportWidth": 1280,
+    "viewportHeight": 800,
+    "devicePixelRatio": 1
+  },
+  "violations": [
+    {
+      "id": "v-1",
+      "rule_id": "meta-refresh",
+      "impact": "critical",
+      "description": "Ensures <meta http-equiv=\"refresh\"> is not used for delayed refresh",
+      "help": "Delayed refresh under 20 hours must not be used",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/meta-refresh?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag221"
+      ],
+      "target_selector": "meta[http-equiv=\"refresh\"]",
+      "html_snippet": "<meta http-equiv=\"refresh\" content=\"360\">",
+      "failure_summary": "Fix any of the following:\n  <meta> tag forces timed refresh of page (less than 20 hours)",
+      "bounding_box": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "violation_number": 1,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'meta-refresh' violates WCAG guidelines (Delayed refresh under 20 hours must not be used). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for meta-refresh -->\n<meta http-equiv=\"refresh\" content=\"360\">",
+        "remediation_steps": [
+          "Review WCAG specification for `meta-refresh`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    }
+  ],
+  "timestamp": "2026-08-14T16:41:22.215355Z"
+}

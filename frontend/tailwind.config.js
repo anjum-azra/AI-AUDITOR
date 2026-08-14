@@ -9,44 +9,52 @@ export default {
     extend: {
       colors: {
         dark: {
-          900: '#0B0F17',
-          800: '#111827',
-          700: '#1F2937',
-          600: '#374151',
+          950: '#050810',
+          900: '#080d1a',
+          800: '#0f1629',
+          700: '#1a2540',
+          600: '#243054',
         },
         brand: {
-          50: '#EEF2FF',
-          100: '#E0E7FF',
-          500: '#6366F1',
-          600: '#4F46E5',
-          700: '#4338CA',
+          50:  '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4f46e5',
+          700: '#4338ca',
+          800: '#3730a3',
+          900: '#312e81',
+        },
+        violet: {
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+        },
+        fuchsia: {
+          400: '#e879f9',
+          500: '#d946ef',
         },
         severity: {
-          critical: '#EF4444',
-          serious: '#F97316',
-          moderate: '#F59E0B',
-          minor: '#3B82F6',
+          critical: '#ef4444',
+          serious:  '#f97316',
+          moderate: '#eab308',
+          minor:    '#3b82f6',
         }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['Fira Code', 'JetBrains Mono', 'monospace'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':  'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       animation: {
-        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'scan-beam': 'scanBeam 2.5s ease-in-out infinite',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4,0,0.6,1) infinite',
       },
-      keyframes: {
-        pulseGlow: {
-          '0%, 100%': { opacity: 0.8, filter: 'drop-shadow(0 0 8px rgba(99, 102, 241, 0.6))' },
-          '50%': { opacity: 0.4, filter: 'drop-shadow(0 0 2px rgba(99, 102, 241, 0.2))' },
-        },
-        scanBeam: {
-          '0%': { top: '0%' },
-          '50%': { top: '95%' },
-          '100%': { top: '0%' },
-        }
-      }
+      keyframes: {},
     },
   },
   plugins: [],
