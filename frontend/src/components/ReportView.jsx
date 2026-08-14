@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Scorecard from './Scorecard';
 import AnnotatedCanvas from './AnnotatedCanvas';
 import ViolationCard from './ViolationCard';
-import { Search, Download, FileJson, Share2, Filter, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Search, Download, FileJson, Share2, AlertCircle, CheckCircle2, SlidersHorizontal } from 'lucide-react';
 
 export default function ReportView({ report }) {
   const [selectedViolation, setSelectedViolation] = useState(null);
-  const [severityFilter, setSeverityFilter] = useState('all'); // 'all' | 'critical' | 'serious' | 'moderate' | 'minor'
+  const [severityFilter, setSeverityFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedSummary, setCopiedSummary] = useState(false);
 
@@ -14,7 +14,6 @@ export default function ReportView({ report }) {
 
   const violations = report.violations || [];
 
-  // Filter violations
   const filteredViolations = violations.filter((v) => {
     const matchesSeverity = severityFilter === 'all' || (v.impact || 'moderate').toLowerCase() === severityFilter;
     const matchesSearch =
@@ -27,7 +26,6 @@ export default function ReportView({ report }) {
 
   const handleSelectViolation = (v) => {
     setSelectedViolation(v);
-    // Scroll card into view
     const el = document.getElementById(`violation-card-${v.id}`);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -60,20 +58,25 @@ export default function ReportView({ report }) {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 animate-fade-up">
       
       {/* Top Action Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 glass-panel p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl"
+        style={{
+          background: 'rgba(10,15,30,0.7)',
+          border: '1px solid rgba(255,255,255,0.07)',
+          backdropFilter: 'blur(20px)',
+        }}>
         <div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-400">Audit Results Report</span>
-          <h2 className="text-xl font-extrabold text-white truncate max-w-xl">{report.url}</h2>
-          <p className="text-xs text-slate-400">Scanned on {new Date(report.timestamp || Date.now()).toLocaleString()}</p>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-400">Audit Dashboard</span>
+          <h2 className="text-xl font-extrabold text-white truncate max-w-xl mt-0.5">{report.url}</h2>
+          <p className="text-xs text-slate-400 mt-0.5">Scanned on {new Date(report.timestamp || Date.now()).toLocaleString()}</p>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={handleExportJson}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 transition-all"
+            className="btn-ghost text-xs"
           >
             <FileJson className="h-4 w-4 text-brand-400" />
             <span>Export JSON</span>
@@ -81,15 +84,15 @@ export default function ReportView({ report }) {
 
           <button
             onClick={handleDownloadScreenshot}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 transition-all"
+            className="btn-ghost text-xs"
           >
-            <Download className="h-4 w-4 text-indigo-400" />
+            <Download className="h-4 w-4 text-violet-400" />
             <span>Screenshot</span>
           </button>
 
           <button
             onClick={handleCopySummary}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-xs font-semibold text-white transition-all shadow-md shadow-brand-600/20"
+            className="btn-primary text-xs"
           >
             <Share2 className="h-4 w-4" />
             <span>{copiedSummary ? 'Copied!' : 'Share Summary'}</span>
@@ -118,7 +121,12 @@ export default function ReportView({ report }) {
         <div className="lg:col-span-6 space-y-4">
           
           {/* Search & Filter Header */}
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800 space-y-3">
+          <div className="p-4 rounded-2xl space-y-3"
+            style={{
+              background: 'rgba(10,15,30,0.7)',
+              border: '1px solid rgba(255,255,255,0.07)',
+              backdropFilter: 'blur(20px)',
+            }}>
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <AlertCircle className="h-4 w-4 text-brand-400" />
@@ -134,21 +142,21 @@ export default function ReportView({ report }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search rule ID, description, or element selector..."
-                className="w-full bg-dark-900 text-xs text-slate-200 placeholder-slate-500 pl-9 pr-4 py-2 rounded-xl border border-slate-800 focus:outline-none focus:border-brand-500"
+                className="w-full bg-slate-950 text-xs text-slate-200 placeholder-slate-500 pl-9 pr-4 py-2.5 rounded-xl border border-slate-800 focus:outline-none focus:border-brand-500 font-mono"
               />
             </div>
 
             {/* Severity Filter Tabs */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar">
               {['all', 'critical', 'serious', 'moderate', 'minor'].map((sev) => (
                 <button
                   key={sev}
                   onClick={() => setSeverityFilter(sev)}
-                  className={`px-3 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap ${
-                    severityFilter === sev
-                      ? 'bg-brand-600 text-white shadow-md shadow-brand-600/30'
-                      : 'bg-dark-900 text-slate-400 hover:text-slate-200 border border-slate-800'
-                  }`}
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap"
+                  style={severityFilter === sev
+                    ? { background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', color: '#fff', boxShadow: '0 0 12px rgba(99,102,241,0.3)' }
+                    : { background: 'rgba(255,255,255,0.04)', color: '#64748b', border: '1px solid rgba(255,255,255,0.06)' }
+                  }
                 >
                   {sev}
                 </button>
@@ -157,9 +165,10 @@ export default function ReportView({ report }) {
           </div>
 
           {/* Violation Cards List */}
-          <div className="space-y-3 max-h-[600px] overflow-y-auto pr-1">
+          <div className="space-y-3 max-h-[600px] overflow-y-auto pr-1 custom-scrollbar">
             {filteredViolations.length === 0 ? (
-              <div className="glass-panel rounded-2xl p-8 text-center text-slate-400 text-xs border border-slate-800">
+              <div className="rounded-2xl p-8 text-center text-slate-400 text-xs border"
+                style={{ background: 'rgba(10,15,30,0.6)', borderColor: 'rgba(255,255,255,0.06)' }}>
                 <CheckCircle2 className="h-8 w-8 text-emerald-400 mx-auto mb-2 opacity-80" />
                 <p className="font-semibold text-slate-200 text-sm">No violations match filter</p>
                 <p className="mt-1 text-slate-500">Try clearing your search query or selecting a different severity tab.</p>

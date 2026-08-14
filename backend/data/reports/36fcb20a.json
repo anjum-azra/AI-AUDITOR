@@ -1,0 +1,1384 @@
+{
+  "id": "36fcb20a",
+  "url": "https://tkrec.ac.in/",
+  "score": 0,
+  "grade": "F",
+  "grade_label": "Non-Compliant (Requires Remediation)",
+  "severity_counts": {
+    "critical": 2,
+    "serious": 26,
+    "moderate": 16,
+    "minor": 0
+  },
+  "total_violations": 44,
+  "passes_count": 37,
+  "incomplete_count": 3,
+  "page_dimensions": {
+    "scrollWidth": 1280,
+    "scrollHeight": 3221,
+    "viewportWidth": 1280,
+    "viewportHeight": 800,
+    "devicePixelRatio": 1
+  },
+  "violations": [
+    {
+      "id": "v-1",
+      "rule_id": "button-name",
+      "impact": "critical",
+      "description": "Ensures buttons have discernible text",
+      "help": "Buttons must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/button-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag412"
+      ],
+      "target_selector": ".owl-dot[role=\"button\"]:nth-child(1)",
+      "html_snippet": "<button role=\"button\" class=\"owl-dot active\"><span></span></button>",
+      "failure_summary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+      "bounding_box": {
+        "x": 616,
+        "y": 2743,
+        "width": 24,
+        "height": 20
+      },
+      "violation_number": 1,
+      "ai_fix": {
+        "plain_english_explanation": "Buttons without discernible text or ARIA labels cannot be announced by screen readers, leaving visually impaired users unable to determine the button's action.",
+        "why_it_matters": "Assistive tech relies on accessible button names to announce interactive controls during keyboard navigation.",
+        "corrected_code": "<button role=\"button\" class=\"owl-dot active\"><span></span></button>",
+        "remediation_steps": [
+          "Added an explicit `aria-label` or visible button text.",
+          "Ensured assistive tools can announce the button's purpose clearly."
+        ]
+      }
+    },
+    {
+      "id": "v-2",
+      "rule_id": "button-name",
+      "impact": "critical",
+      "description": "Ensures buttons have discernible text",
+      "help": "Buttons must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/button-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag412"
+      ],
+      "target_selector": ".owl-dot[role=\"button\"]:nth-child(2)",
+      "html_snippet": "<button role=\"button\" class=\"owl-dot\"><span></span></button>",
+      "failure_summary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+      "bounding_box": {
+        "x": 640,
+        "y": 2743,
+        "width": 24,
+        "height": 20
+      },
+      "violation_number": 2,
+      "ai_fix": {
+        "plain_english_explanation": "Buttons without discernible text or ARIA labels cannot be announced by screen readers, leaving visually impaired users unable to determine the button's action.",
+        "why_it_matters": "Assistive tech relies on accessible button names to announce interactive controls during keyboard navigation.",
+        "corrected_code": "<button role=\"button\" class=\"owl-dot\"><span></span></button>",
+        "remediation_steps": [
+          "Added an explicit `aria-label` or visible button text.",
+          "Ensured assistive tools can announce the button's purpose clearly."
+        ]
+      }
+    },
+    {
+      "id": "v-3",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": ".float-sm-right",
+      "html_snippet": "<h5 class=\"my-0 float-sm-right text-sm-right topbar-code\">EAMCET CODE : TKEM</h5>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 1011,
+        "y": 0,
+        "width": 199,
+        "height": 52
+      },
+      "violation_number": 3,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><h5 class=\"my-0 float-sm-right text-sm-right topbar-code\">EAMCET CODE : TKEM</h5></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-4",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "a[href$=\"about-us/\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"https://tkrec.ac.in/about-us/\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">About Us</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 134,
+        "y": 176,
+        "width": 87,
+        "height": 36
+      },
+      "violation_number": 4,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"https://tkrec.ac.in/about-us/\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">About Us</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-5",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "#menu-item-1560 > .dropdown-toggle[href=\"#\"][data-toggle=\"dropdown\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">ADMISSIONS</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 226,
+        "y": 176,
+        "width": 104,
+        "height": 36
+      },
+      "violation_number": 5,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">ADMISSIONS</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-6",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "a[href$=\"academics/\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"https://tkrec.ac.in/academics/\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">ACADEMICS</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 334,
+        "y": 176,
+        "width": 98,
+        "height": 36
+      },
+      "violation_number": 6,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"https://tkrec.ac.in/academics/\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">ACADEMICS</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-7",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "#menu-item-1563 > .dropdown-toggle[href=\"#\"][data-toggle=\"dropdown\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">DEPARTMENTS</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 437,
+        "y": 176,
+        "width": 117,
+        "height": 36
+      },
+      "violation_number": 7,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">DEPARTMENTS</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-8",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "a[href$=\"library-2/\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"https://tkrec.ac.in/library-2/\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Library</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 558,
+        "y": 176,
+        "width": 79,
+        "height": 36
+      },
+      "violation_number": 8,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"https://tkrec.ac.in/library-2/\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Library</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-9",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "#menu-item-1565 > .dropdown-toggle[href=\"#\"][data-toggle=\"dropdown\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">EXAMINATIONS</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 642,
+        "y": 176,
+        "width": 119,
+        "height": 36
+      },
+      "violation_number": 9,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">EXAMINATIONS</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-10",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "#menu-item-1566 > .dropdown-toggle[href=\"#\"][data-toggle=\"dropdown\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">PLACEMENTS</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 765,
+        "y": 176,
+        "width": 109,
+        "height": 36
+      },
+      "violation_number": 10,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">PLACEMENTS</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-11",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "#menu-item-1568 > .dropdown-toggle[href=\"#\"][data-toggle=\"dropdown\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">FACILITIES</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 879,
+        "y": 176,
+        "width": 92,
+        "height": 36
+      },
+      "violation_number": 11,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">FACILITIES</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-12",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "a[href$=\"committes/\"]",
+      "html_snippet": "<a class=\"nav-link dropdown-toggle\" href=\"https://tkrec.ac.in/committes/\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">COMMITTEES</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 976,
+        "y": 176,
+        "width": 108,
+        "height": 36
+      },
+      "violation_number": 12,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link dropdown-toggle\" href=\"https://tkrec.ac.in/committes/\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">COMMITTEES</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-13",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "#menu-item-1527 > .nav-link",
+      "html_snippet": "<a class=\"nav-link\" href=\"https://tkrec.ac.in/contact-us/\">Contact Us</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #ffffff, background color: #f97800, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 1088,
+        "y": 176,
+        "width": 99,
+        "height": 36
+      },
+      "violation_number": 13,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-link\" href=\"https://tkrec.ac.in/contact-us/\">Contact Us</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-14",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": "#nav-chairman-tab",
+      "html_snippet": "<a class=\"nav-item nav-link active\" id=\"nav-chairman-tab\" data-toggle=\"tab\" href=\"#nav-chairman\" role=\"tab\" aria-controls=\"nav-chairman\" aria-selected=\"true\">Chairman</a>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #f97800, background color: #ffffff, font size: 13.5pt (18px), font weight: bold). Expected contrast ratio of 4.5:1",
+      "bounding_box": {
+        "x": 578,
+        "y": 1008,
+        "width": 68,
+        "height": 30
+      },
+      "violation_number": 14,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><a class=\"nav-item nav-link active\" id=\"nav-chairman-tab\" data-toggle=\"tab\" href=\"#nav-chairman\" role=\"tab\" aria-controls=\"nav-chairman\" aria-selected=\"true\">Chairman</a></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-15",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "tags": [
+        "wcag2aa",
+        "wcag143"
+      ],
+      "target_selector": ".card.feature-info-card.column-reverse:nth-child(1) > .feature-info-card-title",
+      "html_snippet": "<h4 class=\"feature-info-card-title\">Results</h4>",
+      "failure_summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.18 (foreground color: #ffffff, background color: #f59b2a, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1",
+      "bounding_box": {
+        "x": 90,
+        "y": 2440,
+        "width": 164,
+        "height": 24
+      },
+      "violation_number": 15,
+      "ai_fix": {
+        "plain_english_explanation": "Text color contrast ratio is below the WCAG AA minimum threshold (4.5:1 for standard text, 3:1 for large text). Users with low vision or color blindness cannot read the text comfortably.",
+        "why_it_matters": "Sufficient color contrast ensures legibility across different lighting conditions and visual abilities.",
+        "corrected_code": "<span style=\"color: #0F172A; background-color: #FFFFFF; font-weight: 500;\"><h4 class=\"feature-info-card-title\">Results</h4></span>",
+        "remediation_steps": [
+          "Increased text contrast ratio to exceed WCAG 2.1 AA standard (min 4.5:1).",
+          "Adjusted foreground text color to `#0F172A` against light background `#FFFFFF`."
+        ]
+      }
+    },
+    {
+      "id": "v-16",
+      "rule_id": "heading-order",
+      "impact": "moderate",
+      "description": "Ensures the order of headings is semantically correct",
+      "help": "Heading levels should only increase by one",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/heading-order?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": ".clearfix:nth-child(1) > h6",
+      "html_snippet": "<h6 class=\"text-weight-bold\">VEDASHRI VITTHAL GORE\t</h6>",
+      "failure_summary": "Fix any of the following:\n  Heading order invalid",
+      "bounding_box": {
+        "x": 968,
+        "y": 1836,
+        "width": 223,
+        "height": 18
+      },
+      "violation_number": 16,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'heading-order' violates WCAG guidelines (Heading levels should only increase by one). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for heading-order -->\n<h6 class=\"text-weight-bold\">VEDASHRI VITTHAL GORE\t</h6>",
+        "remediation_steps": [
+          "Review WCAG specification for `heading-order`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-17",
+      "rule_id": "landmark-one-main",
+      "impact": "moderate",
+      "description": "Ensures the document has a main landmark",
+      "help": "Document should have one main landmark",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/landmark-one-main?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "html",
+      "html_snippet": "<html lang=\"en-US\">",
+      "failure_summary": "Fix all of the following:\n  Document does not have a main landmark",
+      "bounding_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 3221
+      },
+      "violation_number": 17,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'landmark-one-main' violates WCAG guidelines (Document should have one main landmark). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for landmark-one-main -->\n<html lang=\"en-US\">",
+        "remediation_steps": [
+          "Review WCAG specification for `landmark-one-main`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-18",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": "a[href=\"http://tkrec.in/index.php\"]",
+      "html_snippet": "<a href=\"http://tkrec.in/index.php\"><img width=\"52\" height=\"52\" src=\"https://tkrec.ac.in/wp-content/uploads/2018/06/results.png\" class=\"image wp-image-23 img-center img-fluid attachment-full size-full\" alt=\"\" style=\"max-width: 100%; height: auto;\" decoding=\"async\"></a>",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 90,
+        "y": 2368,
+        "width": 164,
+        "height": 52
+      },
+      "violation_number": 18,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"http://tkrec.in/index.php\"><img width=\"52\" height=\"52\" src=\"https://tkrec.ac.in/wp-content/uploads/2018/06/results.png\" class=\"image wp-image-23 img-center img-fluid attachment-full size-full\" alt=\"\" style=\"max-width: 100%; height: auto;\" decoding=\"async\"></a>",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-19",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": ".card.feature-info-card.column-reverse:nth-child(2) > a",
+      "html_snippet": "<a href=\"http://tkrec.ac.in/wp-content/uploads/2023/11/anti-ragining.jpeg\">",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 324,
+        "y": 2368,
+        "width": 164,
+        "height": 52
+      },
+      "violation_number": 19,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"http://tkrec.ac.in/wp-content/uploads/2023/11/anti-ragining.jpeg\">",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-20",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": ".card.feature-info-card.column-reverse:nth-child(3) > a",
+      "html_snippet": "<a href=\"http://tkrec.in/newsletters.php\"><img width=\"52\" height=\"52\" src=\"https://tkrec.ac.in/wp-content/uploads/2018/06/broucher.png\" class=\"image wp-image-20 img-center img-fluid attachment-full size-full\" alt=\"\" style=\"max-width: 100%; height: auto;\" decoding=\"async\"></a>",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 558,
+        "y": 2368,
+        "width": 164,
+        "height": 52
+      },
+      "violation_number": 20,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"http://tkrec.in/newsletters.php\"><img width=\"52\" height=\"52\" src=\"https://tkrec.ac.in/wp-content/uploads/2018/06/broucher.png\" class=\"image wp-image-20 img-center img-fluid attachment-full size-full\" alt=\"\" style=\"max-width: 100%; height: auto;\" decoding=\"async\"></a>",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-21",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": ".card.feature-info-card.column-reverse:nth-child(4) > a",
+      "html_snippet": "<a href=\"https://tkrec.ac.in/student-degree-verifcation/\">",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 792,
+        "y": 2320,
+        "width": 164,
+        "height": 52
+      },
+      "violation_number": 21,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"https://tkrec.ac.in/student-degree-verifcation/\">",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-22",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": "a[href$=\"gallary.php\"]",
+      "html_snippet": "<a href=\"http://tkrec.in/gallary.php\">",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 1026,
+        "y": 2315,
+        "width": 164,
+        "height": 105
+      },
+      "violation_number": 22,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"http://tkrec.in/gallary.php\">",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-23",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": ".list-inline-item:nth-child(1) > .text-white",
+      "html_snippet": "<a href=\"https://twitter.com/TKRInstitutions\" class=\"text-white\">\n                            <i class=\"fa fa-twitter\"></i>\n                        </a>",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 948,
+        "y": 3056,
+        "width": 17,
+        "height": 16
+      },
+      "violation_number": 23,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"https://twitter.com/TKRInstitutions\" class=\"text-white\">\n                            <i class=\"fa fa-twitter\"></i>\n                        </a>",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-24",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": ".list-inline-item:nth-child(2) > .text-white",
+      "html_snippet": "<a href=\"https://www.facebook.com/Teegala-Krishna-Reddy-Engineering-College-106996871214746/\" class=\"text-white\">\n                            <i class=\"fa fa-facebook\"></i>\n                        </a>",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 991,
+        "y": 3056,
+        "width": 10,
+        "height": 16
+      },
+      "violation_number": 24,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"https://www.facebook.com/Teegala-Krishna-Reddy-Engineering-College-106996871214746/\" class=\"text-white\">\n                            <i class=\"fa fa-facebook\"></i>\n                        </a>",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-25",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": ".list-inline-item:nth-child(3) > .text-white",
+      "html_snippet": "<a href=\"https://www.linkedin.com/in/tkr-institutions-237358166/\" class=\"text-white\">\n                            <i class=\"fa fa-linkedin\"></i>\n                        </a>",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 1027,
+        "y": 3056,
+        "width": 15,
+        "height": 16
+      },
+      "violation_number": 25,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"https://www.linkedin.com/in/tkr-institutions-237358166/\" class=\"text-white\">\n                            <i class=\"fa fa-linkedin\"></i>\n                        </a>",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-26",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": ".list-inline-item:nth-child(4) > .text-white[href=\"#\"]",
+      "html_snippet": "<a href=\"#\" class=\"text-white\">\n                            <i class=\"fa fa-skype\"></i>\n                        </a>",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 1068,
+        "y": 3056,
+        "width": 15,
+        "height": 16
+      },
+      "violation_number": 26,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"/target-page\" aria-label=\"Detailed information page\" class=\"text-white\">\n                            <i class=\"fa fa-skype\"></i>\n                        </a>",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-27",
+      "rule_id": "link-name",
+      "impact": "serious",
+      "description": "Ensures links have discernible text",
+      "help": "Links must have discernible text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag244",
+        "wcag412"
+      ],
+      "target_selector": ".list-inline-item:nth-child(5) > .text-white[href=\"#\"]",
+      "html_snippet": "<a href=\"#\" class=\"text-white\">\n                            <i class=\"fa fa-pinterest\"></i>\n                        </a>",
+      "failure_summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "bounding_box": {
+        "x": 1109,
+        "y": 3056,
+        "width": 15,
+        "height": 16
+      },
+      "violation_number": 27,
+      "ai_fix": {
+        "plain_english_explanation": "Links must have discernible text. Generic text like 'click here', 'read more', or empty icon links break context when screen reader users navigate using a links list.",
+        "why_it_matters": "Screen reader users jump between links out of context. Distinct link text makes destination purpose clear.",
+        "corrected_code": "<a href=\"/target-page\" aria-label=\"Detailed information page\" class=\"text-white\">\n                            <i class=\"fa fa-pinterest\"></i>\n                        </a>",
+        "remediation_steps": [
+          "Added descriptive link text or `aria-label` describing the link target destination.",
+          "Avoided ambiguous link names."
+        ]
+      }
+    },
+    {
+      "id": "v-28",
+      "rule_id": "marquee",
+      "impact": "serious",
+      "description": "Ensures <marquee> elements are not used",
+      "help": "<marquee> elements are deprecated and must not be used",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/marquee?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag222"
+      ],
+      "target_selector": "marquee[direction=\"left\"]",
+      "html_snippet": "<marquee direction=\"left\" onmouseover=\"this.stop();\" onmouseout=\"this.start();\">",
+      "failure_summary": "Fix all of the following:\n  Element is visible",
+      "bounding_box": {
+        "x": 460,
+        "y": 0,
+        "width": 458,
+        "height": 39
+      },
+      "violation_number": 28,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'marquee' violates WCAG guidelines (<marquee> elements are deprecated and must not be used). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for marquee -->\n<marquee direction=\"left\" onmouseover=\"this.stop();\" onmouseout=\"this.start();\">",
+        "remediation_steps": [
+          "Review WCAG specification for `marquee`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-29",
+      "rule_id": "marquee",
+      "impact": "serious",
+      "description": "Ensures <marquee> elements are not used",
+      "help": "<marquee> elements are deprecated and must not be used",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/marquee?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag222"
+      ],
+      "target_selector": ".col-12 > marquee[direction=\"up\"][scrolldelay=\"150\"]",
+      "html_snippet": "<marquee direction=\"up\" scrolldelay=\"150\" onmouseover=\"this.stop();\" onmouseout=\"this.start();\">",
+      "failure_summary": "Fix all of the following:\n  Element is visible",
+      "bounding_box": {
+        "x": 110,
+        "y": 1536,
+        "width": 768,
+        "height": 318
+      },
+      "violation_number": 29,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'marquee' violates WCAG guidelines (<marquee> elements are deprecated and must not be used). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for marquee -->\n<marquee direction=\"up\" scrolldelay=\"150\" onmouseover=\"this.stop();\" onmouseout=\"this.start();\">",
+        "remediation_steps": [
+          "Review WCAG specification for `marquee`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-30",
+      "rule_id": "marquee",
+      "impact": "serious",
+      "description": "Ensures <marquee> elements are not used",
+      "help": "<marquee> elements are deprecated and must not be used",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/marquee?application=axeAPI",
+      "tags": [
+        "wcag2a",
+        "wcag222"
+      ],
+      "target_selector": ".sblock-2.rounded-3:nth-child(2) > marquee[direction=\"up\"][scrolldelay=\"150\"]",
+      "html_snippet": "<marquee direction=\"up\" scrolldelay=\"150\" onmouseover=\"this.stop();\" onmouseout=\"this.start();\">",
+      "failure_summary": "Fix all of the following:\n  Element is visible",
+      "bounding_box": {
+        "x": 968,
+        "y": 1683,
+        "width": 223,
+        "height": 480
+      },
+      "violation_number": 30,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'marquee' violates WCAG guidelines (<marquee> elements are deprecated and must not be used). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for marquee -->\n<marquee direction=\"up\" scrolldelay=\"150\" onmouseover=\"this.stop();\" onmouseout=\"this.start();\">",
+        "remediation_steps": [
+          "Review WCAG specification for `marquee`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-31",
+      "rule_id": "page-has-heading-one",
+      "impact": "moderate",
+      "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+      "help": "Page should contain a level-one heading",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/page-has-heading-one?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "html",
+      "html_snippet": "<html lang=\"en-US\">",
+      "failure_summary": "Fix all of the following:\n  Page must have a level-one heading",
+      "bounding_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 3221
+      },
+      "violation_number": 31,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'page-has-heading-one' violates WCAG guidelines (Page should contain a level-one heading). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for page-has-heading-one -->\n<html lang=\"en-US\">",
+        "remediation_steps": [
+          "Review WCAG specification for `page-has-heading-one`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-32",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": ".topbar",
+      "html_snippet": "<div class=\"topbar\">",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 52
+      },
+      "violation_number": 32,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"topbar\">",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-33",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": ".col-md-3",
+      "html_snippet": "<div class=\"col-md-3 col-sm-12\">",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 55,
+        "y": 687,
+        "width": 293,
+        "height": 655
+      },
+      "violation_number": 33,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"col-md-3 col-sm-12\">",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-34",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": ".mblock-1:nth-child(1)",
+      "html_snippet": "<div class=\"mblock-1\">",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 363,
+        "y": 687,
+        "width": 848,
+        "height": 270
+      },
+      "violation_number": 34,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"mblock-1\">",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-35",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "#info-tab-1-nav-tabs",
+      "html_snippet": "<div id=\"info-tab-1-nav-tabs\" class=\"nav nav-tabs info-tab-1-nav-tabs\" role=\"tablist\">",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 364,
+        "y": 988,
+        "width": 846,
+        "height": 67
+      },
+      "violation_number": 35,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div id=\"info-tab-1-nav-tabs\" class=\"nav nav-tabs info-tab-1-nav-tabs\" role=\"tablist\">",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-36",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "#nav-chairman",
+      "html_snippet": "<div class=\"tab-pane fade show active\" id=\"nav-chairman\" role=\"tabpanel\" aria-labelledby=\"nav-chairman-tab\">",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 389,
+        "y": 1080,
+        "width": 796,
+        "height": 204
+      },
+      "violation_number": 36,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"tab-pane fade show active\" id=\"nav-chairman\" role=\"tabpanel\" aria-labelledby=\"nav-chairman-tab\">",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-37",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": ".news-area-title",
+      "html_snippet": "<h4 class=\"news-area-title\">News &amp; Events</h4>",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 110,
+        "y": 1482,
+        "width": 768,
+        "height": 24
+      },
+      "violation_number": 37,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<h4 class=\"news-area-title\">News &amp; Events</h4>",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-38",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "li:nth-child(1) > .textwidget",
+      "html_snippet": "<div class=\"textwidget\"><p>IV-I END SEMESTER EXAMINATIONS FROM 28-11-2023.</p>\n<p>&nbsp;</p>\n</div>",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 128,
+        "y": 1516,
+        "width": 750,
+        "height": 64
+      },
+      "violation_number": 38,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"textwidget\"><p>IV-I END SEMESTER EXAMINATIONS FROM 28-11-2023.</p>\n<p>&nbsp;</p>\n</div>",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-39",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "li:nth-child(2) > .textwidget",
+      "html_snippet": "<div class=\"textwidget\"><p>2 day International Seminar on Privacy and Security Issues in Online Social Networks , 01<sup>st</sup>&nbsp;&amp; 02<sup>nd</sup>&nbsp;September \u2013 2023</p>\n</div>",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 128,
+        "y": 1616,
+        "width": 750,
+        "height": 24
+      },
+      "violation_number": 39,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"textwidget\"><p>2 day International Seminar on Privacy and Security Issues in Online Social Networks , 01<sup>st</sup>&nbsp;&amp; 02<sup>nd</sup>&nbsp;September \u2013 2023</p>\n</div>",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-40",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "li:nth-child(3) > .textwidget",
+      "html_snippet": "<div class=\"textwidget\"><p>Motivational Program on Engineering Education: Way to a Rewarding Golden Career, 29<sup>th</sup>&nbsp;to 31<sup>st</sup>&nbsp;August \u2013 2023.</p>\n</div>",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 128,
+        "y": 1675,
+        "width": 750,
+        "height": 24
+      },
+      "violation_number": 40,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"textwidget\"><p>Motivational Program on Engineering Education: Way to a Rewarding Golden Career, 29<sup>th</sup>&nbsp;to 31<sup>st</sup>&nbsp;August \u2013 2023.</p>\n</div>",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-41",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": ".col-md-4.col-lg-3.col-sm-12",
+      "html_snippet": "<div class=\"col-lg-3 col-md-4 col-sm-12\">",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 933,
+        "y": 1442,
+        "width": 293,
+        "height": 748
+      },
+      "violation_number": 41,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"col-lg-3 col-md-4 col-sm-12\">",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-42",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "#feature-info-card-deck",
+      "html_snippet": "<div id=\"feature-info-card-deck\" class=\"card-deck feature-info-card-deck\">",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 55,
+        "y": 2290,
+        "width": 1170,
+        "height": 239
+      },
+      "violation_number": 42,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div id=\"feature-info-card-deck\" class=\"card-deck feature-info-card-deck\">",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-43",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": "h3",
+      "html_snippet": "<h3 class=\"main-heading2\">Companies Visited Our Campus</h3>",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 70,
+        "y": 2549,
+        "width": 1140,
+        "height": 46
+      },
+      "violation_number": 43,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<h3 class=\"main-heading2\">Companies Visited Our Campus</h3>",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    },
+    {
+      "id": "v-44",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "tags": [
+        "best-practice"
+      ],
+      "target_selector": ".copyright",
+      "html_snippet": "<div class=\"copyright text-white\">",
+      "failure_summary": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "bounding_box": {
+        "x": 0,
+        "y": 3154,
+        "width": 1280,
+        "height": 67
+      },
+      "violation_number": 44,
+      "ai_fix": {
+        "plain_english_explanation": "The element flagged for rule 'region' violates WCAG guidelines (All page content should be contained by landmarks). It prevents assistive technology from correctly interpreting page structure.",
+        "why_it_matters": "Users relying on screen readers or keyboard navigation encounter barriers when interacting with this component.",
+        "corrected_code": "<!-- Remediation for region -->\n<div class=\"copyright text-white\">",
+        "remediation_steps": [
+          "Review WCAG specification for `region`.",
+          "Apply accessible markup attributes and ensure proper semantic HTML nesting."
+        ]
+      }
+    }
+  ],
+  "timestamp": "2026-08-14T16:48:55.456539Z"
+}
