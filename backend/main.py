@@ -4,9 +4,14 @@ import uuid
 import logging
 import asyncio
 from typing import Optional, Dict, Any
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Response, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+# Load environment variables from .env file if present
+load_dotenv()
+
 
 # Fix Windows asyncio event loop for Playwright subprocess support
 if sys.platform == "win32":

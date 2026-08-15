@@ -60,12 +60,17 @@ export default function App() {
 
   useEffect(() => {
     const root = document.documentElement;
+    const body = document.body;
     if (theme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
+      body.classList.add('dark');
+      body.classList.remove('light');
     } else {
       root.classList.add('light');
       root.classList.remove('dark');
+      body.classList.add('light');
+      body.classList.remove('dark');
     }
     localStorage.setItem('app-theme', theme);
   }, [theme]);
@@ -118,7 +123,14 @@ export default function App() {
   const showHero = !isScanning && !currentReport && !scanError;
 
   return (
-    <div className="min-h-screen flex flex-col transition-colors duration-300">
+    <div
+      className="min-h-screen flex flex-col transition-colors duration-300"
+      style={{
+        backgroundColor: 'var(--bg-main)',
+        color: 'var(--text-main)',
+        backgroundImage: 'var(--glow-bg)',
+      }}
+    >
       {/* Top Navbar */}
       <Navbar
         onOpenApiKey={() => setIsApiKeyOpen(true)}

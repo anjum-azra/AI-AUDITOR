@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Scorecard from './Scorecard';
 import AnnotatedCanvas from './AnnotatedCanvas';
 import ViolationCard from './ViolationCard';
-import { Search, Download, FileJson, Share2, AlertCircle, CheckCircle2, SlidersHorizontal } from 'lucide-react';
+import { Search, Download, FileJson, Share2, AlertCircle, CheckCircle2, FileSpreadsheet, Printer, FileText } from 'lucide-react';
 
 export default function ReportView({ report }) {
   const [selectedViolation, setSelectedViolation] = useState(null);
@@ -43,6 +43,27 @@ export default function ReportView({ report }) {
     URL.revokeObjectURL(url);
   };
 
+  const handleExportCsv = () => {
+    const headers = ['Violation Number', 'Rule ID', 'Severity Impact', 'Description', 'Selector', 'HTML Snippet', 'AI Code Fix'];
+    const rows = violations.map(v => [
+      `"${v.violation_number || ''}"`,
+      `"${(v.rule_id || '').replace(/"/g, '""')}"`,
+      `"${(v.impact || '').replace(/"/g, '""')}"`,
+      `"${(v.description || '').replace(/"/g, '""')}"`,
+      `"${(v.target_selector || '').replace(/"/g, '""')}"`,
+      `"${(v.html_snippet || '').replace(/"/g, '""')}"`,
+      `"${(v.ai_fix?.corrected_code || '').replace(/"/g, '""')}"`,
+    ]);
+    const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `accessibility-audit-${report.id}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const handleDownloadScreenshot = () => {
     const a = document.createElement('a');
     a.href = `/api/report/${report.id}/screenshot`;
@@ -57,45 +78,67 @@ export default function ReportView({ report }) {
     setTimeout(() => setCopiedSummary(false), 2000);
   };
 
+  const handlePrintPdf = () => {
+    window.print();
+  };
+
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 animate-fade-up">
       
       {/* Top Action Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl"
-        style={{
-          background: 'rgba(10,15,30,0.7)',
-          border: '1px solid rgba(255,255,255,0.07)',
-          backdropFilter: 'blur(20px)',
-        }}>
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 rounded-2xl lang-card">
         <div>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-400">Audit Dashboard</span>
-          <h2 className="text-xl font-extrabold text-white truncate max-w-xl mt-0.5">{report.url}</h2>
-          <p className="text-xs text-slate-400 mt-0.5">Scanned on {new Date(report.timestamp || Date.now()).toLocaleString()}</p>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-sky-500">Executive Audit Report</span>
+          <h2 className="text-xl font-extrabold truncate max-w-xl mt-0.5" style={{ color: 'var(--text-main)' }}>{report.url}</h2>
+          <p className="text-xs mt-0.5" style={{ color: 'var(--text-sub)' }}>
+            Scanned on {new Date(report.timestamp || Date.now()).toLocaleString()} · Playwright &amp; axe-core 4.9
+          </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        {/* Multi-Format Export Actions Bar */}
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={handleExportJson}
-            className="btn-ghost text-xs"
+            className="btn-lang-outline text-xs"
+            title="Export JSON audit data"
           >
-            <FileJson className="h-4 w-4 text-brand-400" />
-            <span>Export JSON</span>
+            <FileJson className="h-4 w-4 text-sky-500" />
+            <span>JSON</span>
+          </button>
+
+          <button
+            onClick={handleExportCsv}
+            className="btn-lang-outline text-xs"
+            title="Export CSV for Excel or Jira"
+          >
+            <FileSpreadsheet className="h-4 w-4 text-emerald-500" />
+            <span>CSV</span>
           </button>
 
           <button
             onClick={handleDownloadScreenshot}
-            className="btn-ghost text-xs"
+            className="btn-lang-outline text-xs"
+            title="Download full annotated screenshot"
           >
-            <Download className="h-4 w-4 text-violet-400" />
-            <span>Screenshot</span>
+            <Download className="h-4 w-4 text-purple-500" />
+            <span>PNG Screenshot</span>
+          </button>
+
+          <button
+            onClick={handlePrintPdf}
+            className="btn-lang-outline text-xs"
+            title="Print or save as PDF"
+          >
+            <Printer className="h-4 w-4 text-indigo-500" />
+            <span>Print PDF</span>
           </button>
 
           <button
             onClick={handleCopySummary}
-            className="btn-primary text-xs"
+            className="btn-lang-primary text-xs"
           >
             <Share2 className="h-4 w-4" />
-            <span>{copiedSummary ? 'Copied!' : 'Share Summary'}</span>
+            <span>{copiedSummary ? 'Copied Summary!' : 'Share Summary'}</span>
           </button>
         </div>
       </div>
@@ -121,41 +164,41 @@ export default function ReportView({ report }) {
         <div className="lg:col-span-6 space-y-4">
           
           {/* Search & Filter Header */}
-          <div className="p-4 rounded-2xl space-y-3"
-            style={{
-              background: 'rgba(10,15,30,0.7)',
-              border: '1px solid rgba(255,255,255,0.07)',
-              backdropFilter: 'blur(20px)',
-            }}>
+          <div className="p-4 rounded-2xl space-y-3 lang-card">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <AlertCircle className="h-4 w-4 text-brand-400" />
+              <h3 className="text-sm font-bold flex items-center gap-2" style={{ color: 'var(--text-main)' }}>
+                <AlertCircle className="h-4 w-4 text-sky-500" />
                 <span>Detected Violations ({filteredViolations.length} / {violations.length})</span>
               </h3>
             </div>
 
             {/* Search Input */}
             <div className="relative">
-              <Search className="h-4 w-4 text-slate-500 absolute left-3 top-2.5" />
+              <Search className="h-4 w-4 text-slate-400 absolute left-3 top-3" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search rule ID, description, or element selector..."
-                className="w-full bg-slate-950 text-xs text-slate-200 placeholder-slate-500 pl-9 pr-4 py-2.5 rounded-xl border border-slate-800 focus:outline-none focus:border-brand-500 font-mono"
+                className="w-full text-xs font-mono pl-9 pr-4 py-2.5 rounded-xl focus:outline-none"
+                style={{
+                  background: 'var(--bg-input)',
+                  border: '1px solid var(--border-subtle)',
+                  color: 'var(--text-main)',
+                }}
               />
             </div>
 
             {/* Severity Filter Tabs */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
               {['all', 'critical', 'serious', 'moderate', 'minor'].map((sev) => (
                 <button
                   key={sev}
                   onClick={() => setSeverityFilter(sev)}
                   className="px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap"
                   style={severityFilter === sev
-                    ? { background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', color: '#fff', boxShadow: '0 0 12px rgba(99,102,241,0.3)' }
-                    : { background: 'rgba(255,255,255,0.04)', color: '#64748b', border: '1px solid rgba(255,255,255,0.06)' }
+                    ? { background: 'var(--accent-gradient)', color: '#fff', boxShadow: '0 4px 12px rgba(2,132,199,0.3)' }
+                    : { background: 'var(--bg-card-subtle)', color: 'var(--text-sub)', border: '1px solid var(--border-subtle)' }
                   }
                 >
                   {sev}
@@ -165,13 +208,12 @@ export default function ReportView({ report }) {
           </div>
 
           {/* Violation Cards List */}
-          <div className="space-y-3 max-h-[600px] overflow-y-auto pr-1 custom-scrollbar">
+          <div className="space-y-3 max-h-[620px] overflow-y-auto pr-1">
             {filteredViolations.length === 0 ? (
-              <div className="rounded-2xl p-8 text-center text-slate-400 text-xs border"
-                style={{ background: 'rgba(10,15,30,0.6)', borderColor: 'rgba(255,255,255,0.06)' }}>
-                <CheckCircle2 className="h-8 w-8 text-emerald-400 mx-auto mb-2 opacity-80" />
-                <p className="font-semibold text-slate-200 text-sm">No violations match filter</p>
-                <p className="mt-1 text-slate-500">Try clearing your search query or selecting a different severity tab.</p>
+              <div className="rounded-2xl p-8 text-center text-xs lang-card">
+                <CheckCircle2 className="h-8 w-8 text-emerald-500 mx-auto mb-2 opacity-90" />
+                <p className="font-semibold text-sm" style={{ color: 'var(--text-main)' }}>No violations match filter</p>
+                <p className="mt-1" style={{ color: 'var(--text-muted)' }}>Try clearing your search query or selecting a different severity tab.</p>
               </div>
             ) : (
               filteredViolations.map((v) => (
