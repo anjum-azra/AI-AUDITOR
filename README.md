@@ -10,7 +10,7 @@
 [![Vite](https://img.shields.io/badge/Vite-5.0+-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Playwright](https://img.shields.io/badge/Playwright-Chromium-45BA4B?style=flat&logo=playwright&logoColor=white)](https://playwright.dev/)
 [![axe-core](https://img.shields.io/badge/axe--core-4.9-red?style=flat)](https://github.com/dequelabs/axe-core)
-
+[![Live Website](https://img.shields.io/badge/Live%20Website-Deployed-green?style=flat&logo=vercel&logoColor=white)](https://ai-auditor-pbrg.onrender.com)
 ---
 
 ## 🌟 Key Features
