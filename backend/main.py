@@ -57,19 +57,6 @@ class ScanRequest(BaseModel):
     viewport_width: Optional[int] = 1280
     viewport_height: Optional[int] = 800
 
-@app.get("/")
-def read_root():
-    return {
-        "message": "AI Accessibility Auditor API is running",
-        "endpoints": [
-            "/api/scan (POST)",
-            "/api/report/{id} (GET)",
-            "/api/report/{id}/screenshot (GET)",
-            "/api/reports (GET)",
-            "/api/health (GET)"
-        ]
-    }
-
 @app.get("/api/health")
 def health_check():
     return {"status": "ok", "service": "AI Accessibility Auditor", "version": "1.0.0"}
@@ -161,16 +148,31 @@ if os.path.exists(frontend_dist):
     from fastapi.staticfiles import StaticFiles
     from fastapi.responses import FileResponse
     
-    app.mount("/assets", StaticFiles(directory=os.path.join(frontend_dist, "assets")), name="assets")
+    assets_dir = os.path.join(frontend_dist, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
     
     @app.get("/{full_path:path}")
     async def serve_frontend(full_path: str):
-        if full_path.startswith("api"):
+        if full_path.startswith("api/") or full_path == "api":
             raise HTTPException(status_code=404, detail="API route not found")
         file_path = os.path.join(frontend_dist, full_path)
-        if os.path.exists(file_path) and os.path.isfile(file_path):
+        if full_path and os.path.exists(file_path) and os.path.isfile(file_path):
             return FileResponse(file_path)
         return FileResponse(os.path.join(frontend_dist, "index.html"))
+else:
+    @app.get("/")
+    def read_root():
+        return {
+            "message": "AI Accessibility Auditor API is running",
+            "endpoints": [
+                "/api/scan (POST)",
+                "/api/report/{id} (GET)",
+                "/api/report/{id}/screenshot (GET)",
+                "/api/reports (GET)",
+                "/api/health (GET)"
+            ]
+        }
 
 if __name__ == "__main__":
     import uvicorn
