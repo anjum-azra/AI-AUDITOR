@@ -17,6 +17,9 @@ load_dotenv()
 if sys.platform == "win32":
     asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
+# Ensure backend directory is in sys.path when starting from project root
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from scanner import scan_url_with_playwright
 from screenshot import annotate_screenshot
 from fix_generator import generate_ai_fix

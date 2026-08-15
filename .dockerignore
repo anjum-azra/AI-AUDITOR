@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env
+.env.*
+node_modules
+frontend/node_modules
+frontend/dist
+backend/__pycache__
+backend/data/reports/*
+backend/data/screenshots/*
+!backend/data/reports/.gitkeep
+!backend/data/screenshots/.gitkeep
+*.pyc
+.DS_Store
